@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CumbackCoin</title>
+    <style>
+        /* Background animation style */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: #fff;
+            text-align: center;
+            background: #000;
+            overflow: hidden;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 20px 0;
+            color: #00ff00;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 0 10px;
+        }
+
+        .description {
+            margin: 20px auto;
+            max-width: 800px;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 25px;
+            font-size: 1.1em;
+            color: white;
+            background: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #00ff00;
+        }
+
+        .image-container img {
+            max-width: 80%;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        .wallet {
+            margin-top: 20px;
+            padding: 10px;
+            background: #111;
+            display: inline-block;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+
+    <h1>CumbackCoin</h1>
+
+    <p class="description">
+        "I know we all love a good Cumback Story! Join Us on the craziest CUM BACK in The crypto Community and show the world The greatest COME BACK of all time!"
+    </p>
+
+    <!-- Image -->
+    <div class="image-container">
+        <img src="backcoinpicture.jpg" alt="Cumback Coin Banner">
+    </div>
+
+    <!-- Links -->
+    <a href="https://x.com/search?q=cumbackcoin&t=QfiATXGo8kBeU16HK5xuig&s=09" class="btn" target="_blank">Join on X</a>
+    <a href="https://t.me/cumbackcoin" class="btn" target="_blank">Join Telegram</a>
+    <a href="https://dexscreener.com" class="btn" target="_blank">Check DexScreener</a>
+
+    <!-- Wallet Address -->
+    <div class="wallet">
+        Wallet Address: <strong>0x123456789ABCDEF</strong>
+    </div>
+
+    <footer>
+        © 2025 CumbackCoin. All Rights Reserved.
+    </footer>
+
+    <!-- Matrix effect script -->
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = '0123456789ABCDEF';
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ff00';
+            ctx.font = `${fontSize}px Arial`;
+
+            drops.forEach((y, index) => {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                const x = index * fontSize;
+                ctx.fillText(text, x, y * fontSize);
+
+                if (y * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[index] = 0;
+                }
+
+                drops[index]++;
+            });
+        }
+
+        setInterval(drawMatrix, 50);
+    </script>
+</body>
+</html>
